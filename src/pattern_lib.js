@@ -9,6 +9,7 @@ const repeatSpacedChars = function(lineLength, firstChar, middleChar, lastChar) 
   }
   return text;
 }
+
 const repeatCharacter = function(lineLength, character) {
   let text = "";
   for (let start = 1; start <= lineLength; start++) {
@@ -42,7 +43,7 @@ const createFilledDiamond = function(lineLength) {
   let diamond = "";
   diamond += upperHalfDiamond(lineLength, "*", "*", "*");
   diamond += lowerHalfDiamond(lineLength, "*", "*", "*");
- return diamond.substr(0, diamond.length-1);
+  return diamond.substr(0, diamond.length-1);
 }
 
 const createHollowDiamond = function(lineLength) {
@@ -66,18 +67,73 @@ const createAngledDiamond = function(lineLength) {
   return diamond.substr(0,diamond.length-1);
 }
 
-const main = function(){
-  let shape = process.argv[2];
-  let lineLength = +process.argv[3];
-  lineLength = lineLength % 2 == 0 ? lineLength - 1 : lineLength;
-
-  if (shape == "filled") {
-    console.log(createFilledDiamond(lineLength));
-  } else if (shape == "hollow") {
-    console.log(createHollowDiamond(lineLength));
-  } else {
-    console.log(createAngledDiamond(lineLength));
-  }
+const createDiamondOfType = function(choice,row){
+  let diamondChoice = {filled : createFilledDiamond , hollow : createHollowDiamond , angularHollow : createAngledDiamond}
+  return diamondChoice[choice](row);
 }
 
-main();
+const generateLineWithsuffix = function(width,symbol,suffix) {
+  return repeatCharacter(width,symbol) + suffix;
+}
+
+const createFilledRectangle = function(width,height){
+  let pattern ="";
+  for(let line = 0;line < height ; line++){
+    pattern += generateLineWithsuffix(width,"*","\n");
+  }
+  return  pattern += "\n";
+}
+
+const createEmptyRectangle = function(width,height){
+  let pattern ="";
+  pattern += repeatCharacter(width,"*")+"\n";
+  for(let line = 0;line < height-2 ; line++){
+    pattern += "*" + generateLineWithsuffix(width-2," ","*\n");
+  }
+  return pattern += repeatCharacter(width,"*");
+}
+
+const createAlternatingRectangle = function(width,height){
+  let pattern ="";
+  for(let line = 1;line < height/2 ; line++){
+    pattern += generateLineWithsuffix(width,"*","\n");
+    pattern += generateLineWithsuffix(width,"-","\n");
+  }
+  if(height % 2 != 0){
+    pattern += repeatCharacter(width,"*");
+  }
+  return pattern;
+}
+
+const createRectangleOfType = function(rectangleType,width,height){
+  let patternChoice = 
+    { filled : createFilledRectangle, empty : createEmptyRectangle , alternating : createAlternatingRectangle};
+  return patternChoice[rectangleType](width,height);
+
+}
+
+const createleftTriangle = function(row){
+  let pattern ="";
+  for(let rowIndex = 1; rowIndex <= row; rowIndex++){
+    pattern += repeatCharacter(rowIndex,"*")+"\n";
+  }
+  return pattern;
+}
+
+const createrightTriangle = function(row){
+  let pattern ="";
+  for(let rowIndex = row; rowIndex > 0; rowIndex--){
+    pattern += repeatCharacter(rowIndex-1," ");
+    pattern += repeatCharacter(row-rowIndex+1,"*")+"\n";
+  }
+  return pattern;
+}
+
+const createTriangleOfType = function(choice,row){
+  let triangleChoice =
+    {left : createleftTriangle , right : createrightTriangle}
+  return triangleChoice[choice](row);
+
+}
+
+module.exports = {createRectangleOfType , createTriangleOfType , createDiamondOfType};
