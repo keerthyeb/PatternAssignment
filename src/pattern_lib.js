@@ -81,7 +81,7 @@ const createFilledRectangle = function(width,height){
   for(let line = 0;line < height ; line++){
     pattern += generateLineWithsuffix(width,"*","\n");
   }
-  return  pattern += "\n";
+  return pattern.substr(0,pattern.length-1); 
 }
 
 const createEmptyRectangle = function(width,height){
@@ -117,7 +117,7 @@ const createleftTriangle = function(row){
   for(let rowIndex = 1; rowIndex <= row; rowIndex++){
     pattern += repeatCharacter(rowIndex,"*")+"\n";
   }
-  return pattern;
+  return pattern.substr(0,pattern.length-1);
 }
 
 const createrightTriangle = function(row){
@@ -126,7 +126,7 @@ const createrightTriangle = function(row){
     pattern += repeatCharacter(rowIndex-1," ");
     pattern += repeatCharacter(row-rowIndex+1,"*")+"\n";
   }
-  return pattern;
+  return  pattern.substr(0,pattern.length-1);
 }
 
 const createTriangleOfType = function(choice,row){
