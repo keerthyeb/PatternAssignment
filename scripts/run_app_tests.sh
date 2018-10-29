@@ -1,5 +1,5 @@
 #! /bin/bash
 
-./scripts/run_test.sh ./createDiamond.js ./app_tests_data/diamondpatternInput ./app_tests_data/diamondpatternOutput
-./scripts/run_test.sh ./createTriangle.js ./app_tests_data/trianglePatternInput ./app_tests_data/trianglePatternOutput
-./scripts/run_test.sh ./createRectangle.js ./app_tests_data/rectangleInput ./app_tests_data/rectangleOutput
+./scripts/run_test.sh ./createDiamond.js ./app_tests_data/inputs/diamond ./app_tests_data/outputs/diamond
+./scripts/run_test.sh ./createTriangle.js ./app_tests_data/inputs/triangle ./app_tests_data/outputs/triangle
+./scripts/run_test.sh ./createRectangle.js ./app_tests_data/inputs/rectangle ./app_tests_data/outputs/ectangle
