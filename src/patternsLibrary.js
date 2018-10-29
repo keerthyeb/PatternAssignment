@@ -1,22 +1,8 @@
-const repeatSpacedChars = function(lineLength, firstChar, middleChar, lastChar) {
-  let text = firstChar;
-  for (let start = 1; start <= lineLength - 2; start++) {
-    text += middleChar;
-  }
-  text += lastChar;
-  if (lineLength == 1) {
-    text = "*";
-  }
-  return text;
-}
-
-const repeatCharacter = function(lineLength, character) {
-  let text = "";
-  for (let start = 1; start <= lineLength; start++) {
-    text += character;
-  }
-  return text;
-}
+const {
+  repeatSpacedChars,
+  repeatCharacter,
+  generateLineWithsuffix 
+} = require("./patternsUtil");
 
 const upperHalfDiamond = function(lineLength, firstChar, middleChar, lastChar) {
   let diamond = "";
@@ -70,10 +56,6 @@ const createAngledDiamond = function(lineLength) {
 const createDiamondOfType = function(choice,row){
   let diamondChoice = {filled : createFilledDiamond , hollow : createHollowDiamond , angularHollow : createAngledDiamond}
   return diamondChoice[choice](row);
-}
-
-const generateLineWithsuffix = function(width,symbol,suffix) {
-  return repeatCharacter(width,symbol) + suffix;
 }
 
 const createFilledRectangle = function(width,height){
