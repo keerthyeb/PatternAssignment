@@ -57,9 +57,9 @@ const createAngledDiamond = function(lineLength) {
   return diamond.substr(0,diamond.length-1);
 }
 
-const createDiamondOfType = function(choice,row){
+const createDiamondOfType = function({ type , width }){
   let diamondChoice = {filled : createFilledDiamond , hollow : createHollowDiamond , angularHollow : createAngledDiamond}
-  return diamondChoice[choice](row);
+  return diamondChoice[type](width);
 }
 
 const createFilledRectangle = function(width,height){

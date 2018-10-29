@@ -1,10 +1,11 @@
 const lib = require("./src/patternsLibrary.js");
-let {createDiamondOfType} = lib;
+let {createDiamondOfType , getPatternDetails } = lib;
 
-let diamondType = process.argv[2];
-let row = +process.argv[3];
+const main = function(){
+  let pattern = createDiamondOfType(getPatternDetails(process.argv));
+  console.log(pattern);
+}
+main();
 
-let pattern = createDiamondOfType(diamondType,row);
-console.log(pattern);
 
 
