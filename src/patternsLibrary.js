@@ -4,6 +4,10 @@ const {
   generateLineWithsuffix 
 } = require("./patternsUtil");
 
+const getPatternDetails = function(patternDetails){
+  return { type : patternDetails[2], width : patternDetails[3] , height : patternDetails[4] };
+}
+ 
 const upperHalfDiamond = function(lineLength, firstChar, middleChar, lastChar) {
   let diamond = "";
   for (let row = 1; row <= Math.ceil(lineLength / 2); row++) {
@@ -87,10 +91,10 @@ const createAlternatingRectangle = function(width,height){
   return pattern;
 }
 
-const createRectangleOfType = function(rectangleType,width,height){
+const createRectangleOfType = function({type,width,height}){
   let patternChoice = 
     { filled : createFilledRectangle, empty : createEmptyRectangle , alternating : createAlternatingRectangle};
-  return patternChoice[rectangleType](width,height);
+  return patternChoice[type](width,height);
 
 }
 
@@ -118,4 +122,8 @@ const createTriangleOfType = function(choice,row){
 
 }
 
-module.exports = {createRectangleOfType , createTriangleOfType , createDiamondOfType};
+module.exports = { getPatternDetails , 
+                   createRectangleOfType ,
+                   createTriangleOfType ,
+                   createDiamondOfType 
+                 };

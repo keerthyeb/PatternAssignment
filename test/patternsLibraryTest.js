@@ -1,30 +1,39 @@
 const assert = require("assert");
 const lib = require("./../src/patternsLibrary.js");
-const {createRectangleOfType,
+const {
+  createRectangleOfType,
   createTriangleOfType,
-  createDiamondOfType} = lib;
+  createDiamondOfType,
+  getPatternDetails
+} = lib;
+
+assert.deepEqual(getPatternDetails([,, "filled", "5", "3"]), { type : "filled", width : 5, height :3 });
+assert.deepEqual(getPatternDetails([,, "hollow", "5", "3"]), { type : "hollow", width : 5, height :3 });
+assert.deepEqual(getPatternDetails([,, "angled", "5", "3"]), { type : "angled", width : 5, height :3 });
+assert.deepEqual(getPatternDetails([,, "alternating", "5", "3"]), { type : "alternating", width : 5, height :3 });
+assert.deepEqual(getPatternDetails([,, "empty", "5", "3"]), { type : "empty", width : 5, height :3 });
 
 // test for createRectangleOfType
 let line1 = "**";
 let rectangle1 = [line1,line1].join("\n");
-assert.deepEqual(createRectangleOfType("filled",2,2),rectangle1);
+assert.deepEqual(createRectangleOfType( { type : "filled", width : 2 , height : 2 }) ,rectangle1);
 
 let line2 = "********************";
 let rectangle2 = [line2,line2,line2,line2,line2,line2,line2].join("\n");
-assert.deepEqual(createRectangleOfType("filled",20,7),rectangle2);
+assert.deepEqual(createRectangleOfType( { type : "filled" ,width : 20 , height : 7 }) ,rectangle2);
 
 let line3 = "***";
 let rectangle3 = [line3,line3,line3,line3].join("\n");
-assert.deepEqual(createRectangleOfType("filled",3,4),rectangle3);
+assert.deepEqual(createRectangleOfType( { type : "filled", width : 3 , height : 4 }) ,rectangle3);
 
 
 let line4 = "*                  *";
 let rectangle4 = [line2,line4,line2].join("\n");
-assert.deepEqual(createRectangleOfType("empty",20,3),rectangle4);
+assert.deepEqual(createRectangleOfType( { type : "empty" , width : 20 , height : 3 }) ,rectangle4);
 
 let line5 = "--------------------";
 let rectangle5 = [line2,line5,line2,line5,line2,line5,line2].join("\n");
-assert.deepEqual(createRectangleOfType("alternating",20,7),rectangle5);
+assert.deepEqual(createRectangleOfType( { type : "alternating" , width : 20 , height : 7 }) ,rectangle5);
 
 console.log("Passed the createRectangleTest");
 
