@@ -1,5 +1,5 @@
 const assert = require("assert");
-const lib = require("./../src/pattern_lib.js");
+const lib = require("./../src/patternsLibrary.js");
 const {createRectangleOfType,
   createTriangleOfType,
   createDiamondOfType} = lib;

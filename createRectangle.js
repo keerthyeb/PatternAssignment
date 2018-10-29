@@ -1,4 +1,4 @@
-const lib = require("./src/pattern_lib.js");
+const lib = require("./src/patternsLibrary.js");
 let {createRectangleOfType} = lib;
 
 let rectangleType = process.argv[2];
