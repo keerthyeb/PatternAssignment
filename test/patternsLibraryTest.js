@@ -41,23 +41,23 @@ console.log("Passed the createRectangleTest");
 
 let triangleLeft_2  = "*\n";
 triangleLeft_2     += "**";
-assert.equal(createTriangleOfType("left", 2),triangleLeft_2);
+assert.equal(createTriangleOfType( { type : "left" , width :  2 } ),triangleLeft_2);
 
 let triangleLeft_4 = "*\n";
 triangleLeft_4    += "**\n";
 triangleLeft_4    += "***\n";
 triangleLeft_4    += "****";
-assert.equal(createTriangleOfType("left",4),triangleLeft_4);
+assert.equal(createTriangleOfType( { type : "left" , width : 4 } ),triangleLeft_4);
 
 let triangleRight_2 = " *\n";
 triangleRight_2    += "**";
-assert.equal(createTriangleOfType("right",2),triangleRight_2);
+assert.equal(createTriangleOfType( { type : "right" , width : 2 } ),triangleRight_2);
 
 let triangleRight_4 = "   *\n";
 triangleRight_4    += "  **\n";
 triangleRight_4    += " ***\n";
 triangleRight_4    += "****";
-assert.equal(createTriangleOfType("right",4),triangleRight_4);
+assert.equal(createTriangleOfType( { type : "right" , width : 4 } ),triangleRight_4);
 
 console.log("Passed the createTriangleTest");
 

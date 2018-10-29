@@ -1,10 +1,10 @@
 const lib = require("./src/patternsLibrary.js");
-let {createTriangleOfType} = lib;
+let { createTriangleOfType , getPatternDetails } = lib;
 
-let triangleType = process.argv[2];
-let row = +process.argv[3];
-
-let pattern = createTriangleOfType(triangleType,row);
-console.log(pattern);
+const main = function(){
+  let pattern = createTriangleOfType(getPatternDetails(process.argv));
+  console.log(pattern);
+}
+main();
 
 

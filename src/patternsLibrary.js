@@ -115,10 +115,10 @@ const createrightTriangle = function(row){
   return  pattern.substr(0,pattern.length-1);
 }
 
-const createTriangleOfType = function(choice,row){
+const createTriangleOfType = function({ type , width } ){
   let triangleChoice =
     {left : createleftTriangle , right : createrightTriangle}
-  return triangleChoice[choice](row);
+  return triangleChoice[type](width);
 
 }
 
