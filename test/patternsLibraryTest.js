@@ -14,7 +14,9 @@ let right = "right";
 let left = "left"
 let hollow = "hollow";
 let angularHollow = "angularHollow";
+let negativeOutput = "";
 
+// Test for patternDimensionAndType
 
 assert.deepEqual(patternDimensionAndType([ filled, "5", "3"]), { type : filled, dimensions : { width : 5, height :3 }});
 assert.deepEqual(patternDimensionAndType([ hollow, "5", "3"]), { type : hollow, dimensions : { width : 5, height :3 }});
@@ -42,7 +44,7 @@ let filledRectangle_20x7 = "********************\n";
   filledRectangle_20x7  += "********************\n";
   filledRectangle_20x7  += "********************\n";
   filledRectangle_20x7  += "********************\n";
-  filledRectangle_20x7  += "********************\n";
+  filledRectangle_20x7  +=  "********************\n";
   filledRectangle_20x7  += "********************\n";
  filledRectangle_20x7   += "********************";
 assert.deepEqual(createRectangleOfType( { type : filled ,dimensions : { width : 20 , height : 7 }}) ,filledRectangle_20x7);
@@ -71,6 +73,10 @@ let alternateRectangle_20x7      = "********************\n";
     alternateRectangle_20x7     += "********************";
 assert.deepEqual(createRectangleOfType( { type : alternating , dimensions : { width : 20 , height : 7 }}) ,alternateRectangle_20x7);
 
+// Test for negative input
+assert.deepEqual(createRectangleOfType( { type : filled, dimensions : { width : -1 , height : -1 }}),negativeOutput);
+assert.deepEqual(createRectangleOfType( { type : alternating, dimensions : { width : -3 , height : -2 }}),negativeOutput);
+
 console.log("Passed the createRectangleTest");
 
 // test for createTriangleOfType
@@ -78,6 +84,7 @@ console.log("Passed the createRectangleTest");
 let triangleLeft_2  = "*\n";
 triangleLeft_2     += "**";
 assert.equal(createTriangleOfType( { type : left , dimensions : { width :  2 }} ),triangleLeft_2);
+
 let triangleLeft_0 = "";
 assert.deepEqual(createTriangleOfType( { type : left , dimensions : { width : 0 }} ),triangleLeft_0);
 
@@ -102,6 +109,11 @@ triangleRight_4    += "  **\n";
 triangleRight_4    += " ***\n";
 triangleRight_4    += "****";
 assert.equal(createTriangleOfType( { type : right , dimensions : { width : 4 }} ),triangleRight_4);
+
+// Test for negative inputs
+assert.deepEqual(createTriangleOfType({ type : right , dimensions : {width : -3}} ),negativeOutput);
+assert.deepEqual(createTriangleOfType({ type : left , dimensions : {width : -5}} ),negativeOutput);
+assert.deepEqual(createTriangleOfType({ type : right , dimensions : {width : -1}} ),negativeOutput);
 
 console.log("Passed the createTriangleTest");
 
@@ -148,5 +160,10 @@ angledDiamond_5    += "*   *\n";
 angledDiamond_5    += " \\ / \n";
 angledDiamond_5    += "  *  ";
 assert.equal(createDiamondOfType( { type : angularHollow , dimensions : { width : 5 }} ), angledDiamond_5);
+
+// Test for negative inputs
+assert.deepEqual(createDiamondOfType({ type : hollow , dimensions : {width : -3}} ),negativeOutput);
+assert.deepEqual(createDiamondOfType({ type : filled , dimensions : {width : -1}} ),negativeOutput);
+assert.deepEqual(createDiamondOfType( { type : filled , dimensions : { width : -4 }} ),negativeOutput);
 
 console.log("passed createDiamondTest");
