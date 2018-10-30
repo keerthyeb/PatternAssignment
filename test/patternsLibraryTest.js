@@ -61,22 +61,40 @@ assert.equal(createTriangleOfType( { type : "right" , width : 4 } ),triangleRigh
 
 console.log("Passed the createTriangleTest");
 
-let filledDiamond_3 = " * \n***\n * ";
+let filledDiamond_3 = " * \n";
+filledDiamond_3    += "***\n";
+filledDiamond_3    += " * ";
 assert.equal(createDiamondOfType( { type : "filled" , width : 3 } ), filledDiamond_3);
 
-let filledDiamond_5 = "  *  \n *** \n*****\n *** \n  *  ";
+let filledDiamond_5 = "  *  \n";
+filledDiamond_5    += " *** \n";
+filledDiamond_5    += "*****\n";
+filledDiamond_5    += " *** \n";
+filledDiamond_5    += "  *  ";
 assert.equal(createDiamondOfType( { type : "filled" , width : 5 } ), filledDiamond_5);
 
-let hollowDiamond_3 = " * \n* *\n * ";
+let hollowDiamond_3 = " * \n";
+hollowDiamond_3    += "* *\n";
+hollowDiamond_3    += " * ";
 assert.equal(createDiamondOfType( { type : "hollow" , width : 3 } ), hollowDiamond_3);
 
-let hollowDiamond_5 = "  *  \n * * \n*   *\n * * \n  *  ";
+let hollowDiamond_5 = "  *  \n";
+hollowDiamond_5    += " * * \n";
+hollowDiamond_5    += "*   *\n"
+hollowDiamond_5    += " * * \n";
+hollowDiamond_5    += "  *  ";
 assert.equal(createDiamondOfType( { type : "hollow" , width : 5 } ), hollowDiamond_5);
 
-let angledDiamond_3 = " * \n* *\n * ";
+let angledDiamond_3 = " * \n";
+angledDiamond_3    += "* *\n";
+angledDiamond_3    += " * ";
 assert.equal(createDiamondOfType( { type : "angularHollow" , width : 3 } ), angledDiamond_3);
 
-let angledDiamond_5 =   "  *  \n / \\ \n*   *\n \\ / \n  *  " ;
+let angledDiamond_5 = "  *  \n";
+angledDiamond_5    += " / \\ \n";
+angledDiamond_5    += "*   *\n";
+angledDiamond_5    += " \\ / \n";
+angledDiamond_5    += "  *  ";
 assert.equal(createDiamondOfType( { type : "angularHollow" , width : 5 } ), angledDiamond_5);
 
 console.log("passed createDiamondTest");
