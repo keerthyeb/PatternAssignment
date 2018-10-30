@@ -5,7 +5,7 @@ const {
 } = require("./patternsUtil");
 
 const getPatternDetails = function(patternDetails){
-  return { type : patternDetails[2], width : patternDetails[3] , height : patternDetails[4] };
+  return { type : patternDetails[0], width : patternDetails[1] , height : patternDetails[2] };
 }
  
 const upperHalfDiamond = function(lineLength, firstChar, middleChar, lastChar) {

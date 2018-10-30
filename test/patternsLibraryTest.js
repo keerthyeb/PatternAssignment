@@ -7,11 +7,11 @@ const {
   getPatternDetails
 } = lib;
 
-assert.deepEqual(getPatternDetails([,, "filled", "5", "3"]), { type : "filled", width : 5, height :3 });
-assert.deepEqual(getPatternDetails([,, "hollow", "5", "3"]), { type : "hollow", width : 5, height :3 });
-assert.deepEqual(getPatternDetails([,, "angled", "5", "3"]), { type : "angled", width : 5, height :3 });
-assert.deepEqual(getPatternDetails([,, "alternating", "5", "3"]), { type : "alternating", width : 5, height :3 });
-assert.deepEqual(getPatternDetails([,, "empty", "5", "3"]), { type : "empty", width : 5, height :3 });
+assert.deepEqual(getPatternDetails([ "filled", "5", "3"]), { type : "filled", width : 5, height :3 });
+assert.deepEqual(getPatternDetails([ "hollow", "5", "3"]), { type : "hollow", width : 5, height :3 });
+assert.deepEqual(getPatternDetails([ "angled", "5", "3"]), { type : "angled", width : 5, height :3 });
+assert.deepEqual(getPatternDetails([ "alternating", "5", "3"]), { type : "alternating", width : 5, height :3 });
+assert.deepEqual(getPatternDetails([ "empty", "5", "3"]), { type : "empty", width : 5, height :3 });
 
 // test for createRectangleOfType
 let line1 = "**";
