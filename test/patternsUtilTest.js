@@ -2,15 +2,15 @@ const lib = require("../src/patternsUtil.js");
 const assert = require("assert");
 const {
   repeatCharacter,
-  repeatSpacedChars,
+  generateLine,
   generateLineWithSuffix
 } = lib;
 
-assert.equal(repeatSpacedChars(1, "*", "*", "*"), "*");
-assert.equal(repeatSpacedChars(2, "*", "*", "*"), "**");
-assert.equal(repeatSpacedChars(3, "*", "*", "*"), "***");
-assert.equal(repeatSpacedChars(4, "*", "*", "*"), "****");
-assert.equal(repeatSpacedChars(5, "*", "*", "*"), "*****");
+assert.equal(generateLine(1, "*", "*", "*"), "*");
+assert.equal(generateLine(2, "*", "*", "*"), "**");
+assert.equal(generateLine(3, "*", "*", "*"), "***");
+assert.equal(generateLine(4, "*", "*", "*"), "****");
+assert.equal(generateLine(5, "*", "*", "*"), "*****");
 
 assert.equal(repeatCharacter(1, "*"), "*");
 assert.equal(repeatCharacter(2, "*"), "**");

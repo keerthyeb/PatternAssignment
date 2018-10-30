@@ -1,5 +1,5 @@
 const {
-  repeatSpacedChars,
+  generateLine,
   repeatCharacter,
   generateLineWithSuffix 
 } = require("./patternsUtil");
@@ -13,7 +13,7 @@ const upperHalfDiamond = function(lineLength, firstChar, middleChar, lastChar) {
   for (let row = 1; row <= Math.ceil(lineLength / 2); row++) {
     let count = 2 * row - 1;
     let spaces = repeatCharacter((lineLength - count) / 2, " ");
-    diamond += spaces + repeatSpacedChars(count, firstChar, middleChar, lastChar) + spaces + "\n";
+    diamond += spaces + generateLine(count, firstChar, middleChar, lastChar) + spaces + "\n";
   }
   return diamond;
 }
@@ -23,7 +23,7 @@ const lowerHalfDiamond = function(lineLength, firstChar, middleChar, lastChar) {
   for (let row = Math.ceil(lineLength / 2) - 1; row > 0; row--) {
     let count = 2 * row - 1;
     let spaces = repeatCharacter((lineLength - count) / 2, " ");
-    diamond += spaces + repeatSpacedChars(count, firstChar, middleChar, lastChar) + spaces + "\n";
+    diamond += spaces + generateLine(count, firstChar, middleChar, lastChar) + spaces + "\n";
   }
   return diamond;
 }
@@ -50,9 +50,9 @@ const createAngledDiamond = function(lineLength) {
   for (let row = 1; row < Math.ceil(lineLength / 2); row++) {
     count = 2 * row - 1;
     spaces = repeatCharacter((lineLength - count) / 2, " ");
-    diamond += spaces + repeatSpacedChars(count, "/", " ", "\\") + spaces + "\n";
+    diamond += spaces + generateLine(count, "/", " ", "\\") + spaces + "\n";
   }
-  diamond += repeatSpacedChars(lineLength, "*", " ", "*") + "\n";
+  diamond += generateLine(lineLength, "*", " ", "*") + "\n";
   diamond += lowerHalfDiamond(lineLength, "\\", " ", "/");
   return diamond.substr(0,diamond.length-1);
 }

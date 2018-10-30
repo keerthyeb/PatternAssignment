@@ -6,7 +6,7 @@ const repeatCharacter = function(lineLength, character) {
  return characters;
 }
 
-const repeatSpacedChars = function(lineLength, firstChar, middleChar, lastChar) {
+const generateLine = function(lineLength, firstChar, middleChar, lastChar) {
   let text = firstChar + repeatCharacter(lineLength - 2, middleChar) +  lastChar;
   if (lineLength == 1) {
     text = "*";
@@ -18,4 +18,4 @@ const generateLineWithSuffix = function(width,symbol,Suffix) {
   return repeatCharacter(width,symbol) + Suffix;
 }
 
-module.exports = { repeatCharacter, repeatSpacedChars, generateLineWithSuffix };
+module.exports = { repeatCharacter, generateLine, generateLineWithSuffix };
