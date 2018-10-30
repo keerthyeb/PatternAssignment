@@ -4,14 +4,14 @@ const {
   createRectangleOfType,
   createTriangleOfType,
   createDiamondOfType,
-  getPatternDetails
+  patternDimensionAndType
 } = lib;
 
-assert.deepEqual(getPatternDetails([ "filled", "5", "3"]), { type : "filled", dimensions : { width : 5, height :3 }});
-assert.deepEqual(getPatternDetails([ "hollow", "5", "3"]), { type : "hollow", dimensions : { width : 5, height :3 }});
-assert.deepEqual(getPatternDetails([ "angled", "5", "3"]), { type : "angled", dimensions : { width : 5, height :3 }});
-assert.deepEqual(getPatternDetails([ "alternating", "5", "3"]), { type : "alternating", dimensions : { width : 5, height :3 }});
-assert.deepEqual(getPatternDetails([ "empty", "5", "3"]), { type : "empty", dimensions : { width : 5, height :3 }});
+assert.deepEqual(patternDimensionAndType([ "filled", "5", "3"]), { type : "filled", dimensions : { width : 5, height :3 }});
+assert.deepEqual(patternDimensionAndType([ "hollow", "5", "3"]), { type : "hollow", dimensions : { width : 5, height :3 }});
+assert.deepEqual(patternDimensionAndType([ "angled", "5", "3"]), { type : "angled", dimensions : { width : 5, height :3 }});
+assert.deepEqual(patternDimensionAndType([ "alternating", "5", "3"]), { type : "alternating", dimensions : { width : 5, height :3 }});
+assert.deepEqual(patternDimensionAndType([ "empty", "5", "3"]), { type : "empty", dimensions : { width : 5, height :3 }});
 
 // test for createRectangleOfType
 

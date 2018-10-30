@@ -1,8 +1,8 @@
 const lib = require("./src/patternsLibrary.js");
-let {createRectangleOfType , getPatternDetails } = lib;
+let {createRectangleOfType , patternDimensionAndType } = lib;
 
 const main = function(){
-  let pattern = createRectangleOfType(getPatternDetails(process.argv.slice(2)));
+  let pattern = createRectangleOfType(patternDimensionAndType(process.argv.slice(2)));
   console.log(pattern);
 }
 main();

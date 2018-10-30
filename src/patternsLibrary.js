@@ -4,7 +4,7 @@ const {
   generateLineWithSuffix 
 } = require("./patternsUtil");
 
-const getPatternDetails = function(patternDetails){
+const patternDimensionAndType = function(patternDetails){
   return { type : patternDetails[0], dimensions : { width : patternDetails[1] , height : patternDetails[2] } };
 }
  
@@ -122,7 +122,7 @@ const createTriangleOfType = function({ type , dimensions } ){
 
 }
 
-module.exports = { getPatternDetails , 
+module.exports = { patternDimensionAndType , 
                    createRectangleOfType ,
                    createTriangleOfType ,
                    createDiamondOfType 
