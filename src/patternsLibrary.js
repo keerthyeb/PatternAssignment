@@ -5,7 +5,7 @@ const {
 } = require("./patternsUtil");
 
 const getPatternDetails = function(patternDetails){
-  return { type : patternDetails[0], width : patternDetails[1] , height : patternDetails[2] };
+  return { type : patternDetails[0], dimensions : { width : patternDetails[1] , height : patternDetails[2] } };
 }
  
 const upperHalfDiamond = function(lineLength, firstChar, middleChar, lastChar) {
@@ -57,9 +57,9 @@ const createAngledDiamond = function(lineLength) {
   return diamond.substr(0,diamond.length-1);
 }
 
-const createDiamondOfType = function({ type , width }){
+const createDiamondOfType = function({ type , dimensions }){
   let diamondChoice = {filled : createFilledDiamond , hollow : createHollowDiamond , angularHollow : createAngledDiamond}
-  return diamondChoice[type](width);
+  return diamondChoice[type](dimensions.width);
 }
 
 const createFilledRectangle = function(width,height){
@@ -91,10 +91,10 @@ const createAlternatingRectangle = function(width,height){
   return pattern;
 }
 
-const createRectangleOfType = function({type,width,height}){
+const createRectangleOfType = function({type,dimensions}){
   let patternChoice = 
     { filled : createFilledRectangle, empty : createEmptyRectangle , alternating : createAlternatingRectangle};
-  return patternChoice[type](width,height);
+  return patternChoice[type](dimensions.width,dimensions.height);
 
 }
 
@@ -115,10 +115,10 @@ const createrightTriangle = function(row){
   return  pattern.substr(0,pattern.length-1);
 }
 
-const createTriangleOfType = function({ type , width } ){
+const createTriangleOfType = function({ type , dimensions } ){
   let triangleChoice =
     {left : createleftTriangle , right : createrightTriangle}
-  return triangleChoice[type](width);
+  return triangleChoice[type](dimensions.width);
 
 }
 
