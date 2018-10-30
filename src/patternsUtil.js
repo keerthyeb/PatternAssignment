@@ -1,19 +1,15 @@
-const repeatSpacedChars = function(lineLength, firstChar, middleChar, lastChar) {
-  let text = firstChar;
-  for (let start = 1; start <= lineLength - 2; start++) {
-    text += middleChar;
+const repeatCharacter = function(lineLength, character) {
+  if(lineLength < 0){
+    lineLength = 0;
   }
-  text += lastChar;
-  if (lineLength == 1) {
-    text = "*";
-  }
-  return text;
+  let characters = new Array(lineLength).fill(character).join("");
+ return characters;
 }
 
-const repeatCharacter = function(lineLength, character) {
-  let text = "";
-  for (let start = 1; start <= lineLength; start++) {
-    text += character;
+const repeatSpacedChars = function(lineLength, firstChar, middleChar, lastChar) {
+  let text = firstChar + repeatCharacter(lineLength - 2, middleChar) +  lastChar;
+  if (lineLength == 1) {
+    text = "*";
   }
   return text;
 }
