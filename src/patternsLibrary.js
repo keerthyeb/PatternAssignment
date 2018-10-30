@@ -1,7 +1,7 @@
 const {
   repeatSpacedChars,
   repeatCharacter,
-  generateLineWithsuffix 
+  generateLineWithSuffix 
 } = require("./patternsUtil");
 
 const getPatternDetails = function(patternDetails){
@@ -65,7 +65,7 @@ const createDiamondOfType = function({ type , width }){
 const createFilledRectangle = function(width,height){
   let pattern ="";
   for(let line = 0;line < height ; line++){
-    pattern += generateLineWithsuffix(width,"*","\n");
+    pattern += generateLineWithSuffix(width,"*","\n");
   }
   return pattern.substr(0,pattern.length-1); 
 }
@@ -74,7 +74,7 @@ const createEmptyRectangle = function(width,height){
   let pattern ="";
   pattern += repeatCharacter(width,"*")+"\n";
   for(let line = 0;line < height-2 ; line++){
-    pattern += "*" + generateLineWithsuffix(width-2," ","*\n");
+    pattern += "*" + generateLineWithSuffix(width-2," ","*\n");
   }
   return pattern += repeatCharacter(width,"*");
 }
@@ -82,8 +82,8 @@ const createEmptyRectangle = function(width,height){
 const createAlternatingRectangle = function(width,height){
   let pattern ="";
   for(let line = 1;line < height/2 ; line++){
-    pattern += generateLineWithsuffix(width,"*","\n");
-    pattern += generateLineWithsuffix(width,"-","\n");
+    pattern += generateLineWithSuffix(width,"*","\n");
+    pattern += generateLineWithSuffix(width,"-","\n");
   }
   if(height % 2 != 0){
     pattern += repeatCharacter(width,"*");

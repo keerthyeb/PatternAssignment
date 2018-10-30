@@ -18,8 +18,8 @@ const repeatCharacter = function(lineLength, character) {
   return text;
 }
 
-const generateLineWithsuffix = function(width,symbol,suffix) {
-  return repeatCharacter(width,symbol) + suffix;
+const generateLineWithSuffix = function(width,symbol,Suffix) {
+  return repeatCharacter(width,symbol) + Suffix;
 }
 
-module.exports = { repeatCharacter, repeatSpacedChars, generateLineWithsuffix };
+module.exports = { repeatCharacter, repeatSpacedChars, generateLineWithSuffix };

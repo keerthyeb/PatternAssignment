@@ -3,7 +3,7 @@ const assert = require("assert");
 const {
   repeatCharacter,
   repeatSpacedChars,
-  generateLineWithsuffix
+  generateLineWithSuffix
 } = lib;
 
 assert.equal(repeatSpacedChars(1, "*", "*", "*"), "*");
@@ -18,9 +18,9 @@ assert.equal(repeatCharacter(3, "*"), "***");
 assert.equal(repeatCharacter(4, "*"), "****");
 assert.equal(repeatCharacter(5, "*"), "*****");
 
-assert.deepEqual(generateLineWithsuffix(2,"*","\n"), "**\n");
-assert.deepEqual(generateLineWithsuffix(4,"-","*"), "----*");
-assert.deepEqual(generateLineWithsuffix(5,"#","*"), "#####*");
+assert.deepEqual(generateLineWithSuffix(2,"*","\n"), "**\n");
+assert.deepEqual(generateLineWithSuffix(4,"-","*"), "----*");
+assert.deepEqual(generateLineWithSuffix(5,"#","*"), "#####*");
 
 console.log("test passed");
 
