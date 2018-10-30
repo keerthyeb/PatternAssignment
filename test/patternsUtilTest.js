@@ -18,9 +18,11 @@ assert.equal(repeatCharacter(3, "*"), "***");
 assert.equal(repeatCharacter(4, "*"), "****");
 assert.equal(repeatCharacter(5, "*"), "*****");
 
-assert.deepEqual(generateLineWithSuffix(2,"*","\n"), "**\n");
-assert.deepEqual(generateLineWithSuffix(4,"-","*"), "----*");
-assert.deepEqual(generateLineWithSuffix(5,"#","*"), "#####*");
+let newLineSuffix = "\n";
+let starSuffix = "*";
+assert.deepEqual(generateLineWithSuffix(2,"*",newLineSuffix), "**\n");
+assert.deepEqual(generateLineWithSuffix(4,"-",starSuffix), "----*");
+assert.deepEqual(generateLineWithSuffix(5,"#",starSuffix), "#####*");
 
 console.log("test passed");
 
