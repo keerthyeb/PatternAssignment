@@ -14,26 +14,53 @@ assert.deepEqual(getPatternDetails([ "alternating", "5", "3"]), { type : "altern
 assert.deepEqual(getPatternDetails([ "empty", "5", "3"]), { type : "empty", width : 5, height :3 });
 
 // test for createRectangleOfType
-let line1 = "**";
-let rectangle1 = [line1,line1].join("\n");
-assert.deepEqual(createRectangleOfType( { type : "filled", width : 2 , height : 2 }) ,rectangle1);
 
-let line2 = "********************";
-let rectangle2 = [line2,line2,line2,line2,line2,line2,line2].join("\n");
-assert.deepEqual(createRectangleOfType( { type : "filled" ,width : 20 , height : 7 }) ,rectangle2);
+let filledRectangle_5x5  = "*****\n";
+filledRectangle_5x5     += "*****\n";
+filledRectangle_5x5     += "*****\n";
+filledRectangle_5x5     += "*****\n";
+filledRectangle_5x5     += "*****";
+assert.equal(createRectangleOfType( {type : 'filled', width : 5 , height : 5 } ),filledRectangle_5x5);
 
-let line3 = "***";
-let rectangle3 = [line3,line3,line3,line3].join("\n");
-assert.deepEqual(createRectangleOfType( { type : "filled", width : 3 , height : 4 }) ,rectangle3);
+let filledRectangle_1x1 = "*";
+assert.deepEqual(createRectangleOfType( { type : "filled", width : 1 , height : 1 }),filledRectangle_1x1);
+
+let filledRectangle_2x2 = "**\n";
+filledRectangle_2x2    += "**"
+assert.deepEqual(createRectangleOfType( { type : "filled", width : 2 , height : 2 }) ,filledRectangle_2x2);
+
+let filledRectangle_20x7 = "********************\n";
+  filledRectangle_20x7  += "********************\n";
+  filledRectangle_20x7  += "********************\n";
+  filledRectangle_20x7  += "********************\n";
+  filledRectangle_20x7  += "********************\n";
+  filledRectangle_20x7  += "********************\n";
+ filledRectangle_20x7   += "********************";
+assert.deepEqual(createRectangleOfType( { type : "filled" ,width : 20 , height : 7 }) ,filledRectangle_20x7);
+
+let filledRectangle_3x3 = "***\n";
+    filledRectangle_3x3+= "***"
+assert.deepEqual(createRectangleOfType( { type : "filled", width : 3 , height : 2 }) ,filledRectangle_3x3);
 
 
-let line4 = "*                  *";
-let rectangle4 = [line2,line4,line2].join("\n");
-assert.deepEqual(createRectangleOfType( { type : "empty" , width : 20 , height : 3 }) ,rectangle4);
+let emptyRectangle_4x4  = "********************\n"
+    emptyRectangle_4x4 += "*                  *\n";
+    emptyRectangle_4x4 += "********************";
+assert.deepEqual(createRectangleOfType( { type : "empty" , width : 20 , height : 3 }) ,emptyRectangle_4x4);
 
-let line5 = "--------------------";
-let rectangle5 = [line2,line5,line2,line5,line2,line5,line2].join("\n");
-assert.deepEqual(createRectangleOfType( { type : "alternating" , width : 20 , height : 7 }) ,rectangle5);
+let alternateRectangle_3x3  = "***\n";
+alternateRectangle_3x3     += "---\n";
+alternateRectangle_3x3     += "***";
+assert.equal(createRectangleOfType( { type : "alternating" ,  width : 3 , height : 3 }),alternateRectangle_3x3);
+
+let alternateRectangle_20x7      = "********************\n";
+    alternateRectangle_20x7     += "--------------------\n";
+    alternateRectangle_20x7     += "********************\n";
+    alternateRectangle_20x7     += "--------------------\n";
+    alternateRectangle_20x7     += "********************\n";
+    alternateRectangle_20x7     += "--------------------\n";
+    alternateRectangle_20x7     += "********************";
+assert.deepEqual(createRectangleOfType( { type : "alternating" , width : 20 , height : 7 }) ,alternateRectangle_20x7);
 
 console.log("Passed the createRectangleTest");
 
@@ -42,6 +69,15 @@ console.log("Passed the createRectangleTest");
 let triangleLeft_2  = "*\n";
 triangleLeft_2     += "**";
 assert.equal(createTriangleOfType( { type : "left" , width :  2 } ),triangleLeft_2);
+
+let triangleLeft_0 = "";
+assert.deepEqual(createTriangleOfType( { type : "left" , width : 0 } ),triangleLeft_0);
+
+let triangleLeft_1 = "*";
+assert.deepEqual(createTriangleOfType( { type : "left" , width : 1 }),triangleLeft_1);
+
+let triangleRight_1 = "*";
+assert.deepEqual(createTriangleOfType( { type : "right" , width : 1 }),triangleRight_1);
 
 let triangleLeft_4 = "*\n";
 triangleLeft_4    += "**\n";
@@ -60,6 +96,11 @@ triangleRight_4    += "****";
 assert.equal(createTriangleOfType( { type : "right" , width : 4 } ),triangleRight_4);
 
 console.log("Passed the createTriangleTest");
+
+ // test for createDiamondOfType
+
+let hollowDiamond_0 = "";
+assert.deepEqual(createDiamondOfType({ type : "hollow" , width : 0 } ), hollowDiamond_0);
 
 let filledDiamond_3 = " * \n";
 filledDiamond_3    += "***\n";
@@ -84,6 +125,9 @@ hollowDiamond_5    += "*   *\n"
 hollowDiamond_5    += " * * \n";
 hollowDiamond_5    += "  *  ";
 assert.equal(createDiamondOfType( { type : "hollow" , width : 5 } ), hollowDiamond_5);
+
+let angledDiamond_1 = "*";
+assert.deepEqual(createDiamondOfType( { type : "angularHollow", width : 1 }), angledDiamond_1 );
 
 let angledDiamond_3 = " * \n";
 angledDiamond_3    += "* *\n";
