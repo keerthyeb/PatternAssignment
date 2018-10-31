@@ -2,8 +2,7 @@ const repeatCharacter = function(lineLength, character) {
   if(lineLength < 0){
     lineLength = 0;
   }
-  let characters = new Array(lineLength).fill(character).join("");
- return characters;
+  return  new Array(lineLength).fill(character).join("");
 }
 
 const generateLine = function(lineLength, firstChar, middleChar, lastChar) {
@@ -14,8 +13,8 @@ const generateLine = function(lineLength, firstChar, middleChar, lastChar) {
   return text;
 }
 
-const generateLineWithSuffix = function(width,symbol,Suffix) {
-  return repeatCharacter(width,symbol) + Suffix;
+const generateLineWithSuffix = function(width,symbol,suffix) {
+  return repeatCharacter(width,symbol) + suffix;
 }
 
 module.exports = { repeatCharacter, generateLine, generateLineWithSuffix };
