@@ -29,7 +29,9 @@ const lowerHalfDiamond = function(lineLength, firstChar, middleChar, lastChar) {
 }
 
 const createFilledDiamond = function(lineLength) {
-  lineLength = lineLength %2 == 0 ? lineLength -1 : lineLength;
+  if(lineLength % 2 == 0 ){
+    lineLength--;
+  }
   let diamond = "";
   diamond += upperHalfDiamond(lineLength, "*", "*", "*");
   diamond += lowerHalfDiamond(lineLength, "*", "*", "*");
@@ -37,7 +39,9 @@ const createFilledDiamond = function(lineLength) {
 }
 
 const createHollowDiamond = function(lineLength) {
-  lineLength = lineLength %2 == 0 ? lineLength -1 : lineLength;
+  if(lineLength % 2 == 0){
+    lineLength--;
+  }
   let diamond = "";
   diamond += upperHalfDiamond(lineLength, "*", " ", "*");
   diamond += lowerHalfDiamond(lineLength, "*", " ", "*");
@@ -45,7 +49,9 @@ const createHollowDiamond = function(lineLength) {
 }
 
 const createAngledDiamond = function(lineLength) {
-  lineLength = lineLength %2 == 0 ? lineLength -1 : lineLength;
+  if( lineLength % 2 == 0){
+    lineLength --;
+  }
   let diamond = "";
   for (let row = 1; row < Math.ceil(lineLength / 2); row++) {
     count = 2 * row - 1;
