@@ -9,21 +9,21 @@ const selectDimensionAndType = function(patternDetails){
 }
  
 const upperHalfDiamond = function(lineLength, firstChar, middleChar, lastChar) {
-  let diamond = "";
+  let diamond = [] ;
   for (let row = 1; row <= Math.ceil(lineLength / 2); row++) {
     let count = 2 * row - 1;
     let spaces = repeatCharacter((lineLength - count) / 2, " ");
-    diamond += spaces + generateLine(count, firstChar, middleChar, lastChar) + spaces + "\n";
+    diamond.push(spaces + generateLine(count, firstChar, middleChar, lastChar) + spaces );
   }
   return diamond;
 }
 
 const lowerHalfDiamond = function(lineLength, firstChar, middleChar, lastChar) {
-  let diamond = "";
+  let diamond = [] ;
   for (let row = Math.ceil(lineLength / 2) - 1; row > 0; row--) {
     let count = 2 * row - 1;
     let spaces = repeatCharacter((lineLength - count) / 2, " ");
-    diamond += spaces + generateLine(count, firstChar, middleChar, lastChar) + spaces + "\n";
+    diamond.push(spaces + generateLine(count, firstChar, middleChar, lastChar) + spaces);
   }
   return diamond;
 }
@@ -33,10 +33,9 @@ const createFilledDiamond = function(lineLength) {
   if(lengthOfLine % 2 == 0 ){
     lengthOfLine--;
   }
-  let diamond = "";
-  diamond += upperHalfDiamond(lengthOfLine, "*", "*", "*");
-  diamond += lowerHalfDiamond(lengthOfLine, "*", "*", "*");
-  return diamond.substr(0, diamond.length-1);
+  let upperHalf = upperHalfDiamond(lengthOfLine, "*", "*", "*");
+  let lowerHalf = lowerHalfDiamond(lengthOfLine, "*", "*", "*");
+  return upperHalf.concat(lowerHalf).join("\n");
 }
 
 const createHollowDiamond = function(lineLength) {
@@ -44,10 +43,9 @@ const createHollowDiamond = function(lineLength) {
   if(lengthOfLine % 2 == 0){
     lengthOfLine--;
   }
-  let diamond = "";
-  diamond += upperHalfDiamond(lengthOfLine, "*", " ", "*");
-  diamond += lowerHalfDiamond(lengthOfLine, "*", " ", "*");
-  return diamond.substr(0, diamond.length-1);
+  let upperHalf = upperHalfDiamond(lengthOfLine, "*", " ", "*");
+  let lowerHalf = lowerHalfDiamond(lengthOfLine, "*", " ", "*");
+  return upperHalf.concat(lowerHalf).join("\n");
 }
 
 const createAngledDiamond = function(lineLength) {
@@ -55,15 +53,15 @@ const createAngledDiamond = function(lineLength) {
   if( lengthOfLine % 2 == 0){
     lengthOfLine --;
   }
-  let diamond = "";
+  let diamond = [] ;
   for (let row = 1; row < Math.ceil(lengthOfLine / 2); row++) {
     count = 2 * row - 1;
     spaces = repeatCharacter((lengthOfLine - count) / 2, " ");
-    diamond += spaces + generateLine(count, "/", " ", "\\") + spaces + "\n";
+    diamond.push(spaces + generateLine(count, "/", " ", "\\") + spaces);
   }
-  diamond += generateLine(lengthOfLine, "*", " ", "*") + "\n";
-  diamond += lowerHalfDiamond(lengthOfLine, "\\", " ", "/");
-  return diamond.substr(0,diamond.length-1);
+  diamond.push(generateLine(lengthOfLine, "*", " ", "*"));
+  let lowerHalf = lowerHalfDiamond(lengthOfLine, "\\", " ", "/");
+  return diamond.concat(lowerHalf).join("\n");
 }
 
 const createDiamondOfType = function({ type , dimensions }){
