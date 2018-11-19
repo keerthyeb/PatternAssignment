@@ -1,7 +1,5 @@
 const repeatCharacter = function(lineLength, character) {
-  if(lineLength < 0){
-    lineLength = 0;
-  }
+  lineLength = Math.max(0,lineLength);
   return  new Array(lineLength).fill(character).join("");
 }
 
