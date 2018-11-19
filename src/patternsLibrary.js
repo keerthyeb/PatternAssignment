@@ -70,32 +70,33 @@ const createDiamondOfType = function({ type , dimensions }){
 }
 
 const createFilledRectangle = function(width,height){
-  let pattern ="";
+  let pattern = [] ;
   for(let line = 0;line < height ; line++){
-    pattern += generateLineWithSuffix(width,"*","\n");
+    pattern.push(repeatCharacter(width,"*"));
   }
-  return pattern.substr(0,pattern.length-1); 
+  return pattern.join("\n"); 
 }
 
 const createEmptyRectangle = function(width,height){
-  let pattern ="";
-  pattern += repeatCharacter(width,"*")+"\n";
+  let pattern = [] ;
+  pattern.push(repeatCharacter(width,"*"));
   for(let line = 0;line < height-2 ; line++){
-    pattern += "*" + generateLineWithSuffix(width-2," ","*\n");
+    pattern.push( "*" + repeatCharacter(width-2," ")+ "*" );
   }
-  return pattern += repeatCharacter(width,"*");
+  pattern.push(repeatCharacter(width,"*"));
+  return pattern.join("\n");
 }
 
 const createAlternatingRectangle = function(width,height){
-  let pattern ="";
+  let pattern = [] ;
   for(let line = 1;line < height/2 ; line++){
-    pattern += generateLineWithSuffix(width,"*","\n");
-    pattern += generateLineWithSuffix(width,"-","\n");
+    pattern.push(repeatCharacter(width,"*"));
+    pattern.push(repeatCharacter(width,"-"));
   }
   if(height % 2 != 0){
-    pattern += repeatCharacter(width,"*");
+    pattern.push(repeatCharacter(width,"*"));
   }
-  return pattern;
+  return pattern.join("\n");
 }
 
 const createRectangleOfType = function({type,dimensions}){
