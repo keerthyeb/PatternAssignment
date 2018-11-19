@@ -29,37 +29,40 @@ const lowerHalfDiamond = function(lineLength, firstChar, middleChar, lastChar) {
 }
 
 const createFilledDiamond = function(lineLength) {
-  if(lineLength % 2 == 0 ){
-    lineLength--;
+  let lengthOfLine = lineLength;
+  if(lengthOfLine % 2 == 0 ){
+    lengthOfLine--;
   }
   let diamond = "";
-  diamond += upperHalfDiamond(lineLength, "*", "*", "*");
-  diamond += lowerHalfDiamond(lineLength, "*", "*", "*");
+  diamond += upperHalfDiamond(lengthOfLine, "*", "*", "*");
+  diamond += lowerHalfDiamond(lengthOfLine, "*", "*", "*");
   return diamond.substr(0, diamond.length-1);
 }
 
 const createHollowDiamond = function(lineLength) {
-  if(lineLength % 2 == 0){
-    lineLength--;
+  let lengthOfLine = lineLength;
+  if(lengthOfLine % 2 == 0){
+    lengthOfLine--;
   }
   let diamond = "";
-  diamond += upperHalfDiamond(lineLength, "*", " ", "*");
-  diamond += lowerHalfDiamond(lineLength, "*", " ", "*");
+  diamond += upperHalfDiamond(lengthOfLine, "*", " ", "*");
+  diamond += lowerHalfDiamond(lengthOfLine, "*", " ", "*");
   return diamond.substr(0, diamond.length-1);
 }
 
 const createAngledDiamond = function(lineLength) {
-  if( lineLength % 2 == 0){
-    lineLength --;
+  let lengthOfLine = lineLength;
+  if( lengthOfLine % 2 == 0){
+    lengthOfLine --;
   }
   let diamond = "";
-  for (let row = 1; row < Math.ceil(lineLength / 2); row++) {
+  for (let row = 1; row < Math.ceil(lengthOfLine / 2); row++) {
     count = 2 * row - 1;
-    spaces = repeatCharacter((lineLength - count) / 2, " ");
+    spaces = repeatCharacter((lengthOfLine - count) / 2, " ");
     diamond += spaces + generateLine(count, "/", " ", "\\") + spaces + "\n";
   }
-  diamond += generateLine(lineLength, "*", " ", "*") + "\n";
-  diamond += lowerHalfDiamond(lineLength, "\\", " ", "/");
+  diamond += generateLine(lengthOfLine, "*", " ", "*") + "\n";
+  diamond += lowerHalfDiamond(lengthOfLine, "\\", " ", "/");
   return diamond.substr(0,diamond.length-1);
 }
 
