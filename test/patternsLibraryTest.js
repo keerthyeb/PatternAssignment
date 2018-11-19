@@ -4,7 +4,7 @@ const {
   createRectangleOfType,
   createTriangleOfType,
   createDiamondOfType,
-  patternDimensionAndType
+  selectDimensionAndType
 } = lib;
 
 let filled = "filled";
@@ -17,13 +17,13 @@ let angularHollow = "angularHollow";
 let negativeOutput = "";
 let negativeInput = -1;
 
-// Test for patternDimensionAndType
+// Test for selectDimensionAndType
 
-assert.deepEqual(patternDimensionAndType([ filled, "5", "3"]), { type : filled, dimensions : { width : 5, height :3 }});
-assert.deepEqual(patternDimensionAndType([ hollow, "5", "3"]), { type : hollow, dimensions : { width : 5, height :3 }});
-assert.deepEqual(patternDimensionAndType([ "angled", "5", "3"]), { type : "angled", dimensions : { width : 5, height :3 }});
-assert.deepEqual(patternDimensionAndType([ alternating, "5", "3"]), { type : alternating, dimensions : { width : 5, height :3 }});
-assert.deepEqual(patternDimensionAndType([ empty, "5", "3"]), { type : empty, dimensions : { width : 5, height :3 }});
+assert.deepEqual(selectDimensionAndType([ filled, "5", "3"]), { type : filled, dimensions : { width : 5, height :3 }});
+assert.deepEqual(selectDimensionAndType([ hollow, "5", "3"]), { type : hollow, dimensions : { width : 5, height :3 }});
+assert.deepEqual(selectDimensionAndType([ "angled", "5", "3"]), { type : "angled", dimensions : { width : 5, height :3 }});
+assert.deepEqual(selectDimensionAndType([ alternating, "5", "3"]), { type : alternating, dimensions : { width : 5, height :3 }});
+assert.deepEqual(selectDimensionAndType([ empty, "5", "3"]), { type : empty, dimensions : { width : 5, height :3 }});
 
 // test for createRectangleOfType
 

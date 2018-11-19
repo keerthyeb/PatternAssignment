@@ -1,8 +1,8 @@
 const lib = require("./src/patternsLibrary.js");
-let { createTriangleOfType , patternDimensionAndType } = lib;
+let { createTriangleOfType , selectDimensionAndType } = lib;
 
 const main = function(){
-  let pattern = createTriangleOfType(patternDimensionAndType(process.argv.slice(2)));
+  let pattern = createTriangleOfType(selectDimensionAndType(process.argv.slice(2)));
   console.log(pattern);
 }
 main();
