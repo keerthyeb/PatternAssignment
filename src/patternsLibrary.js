@@ -108,20 +108,20 @@ const createRectangleOfType = function({type,dimensions}){
 }
 
 const createleftTriangle = function(row){
-  let pattern ="";
+  let pattern = [] ;
   for(let rowIndex = 1; rowIndex <= row; rowIndex++){
-    pattern += repeatCharacter(rowIndex,"*")+"\n";
+    pattern.push(repeatCharacter(rowIndex,"*"));
   }
-  return pattern.substr(0,pattern.length-1);
+  return pattern.join("\n");
 }
 
 const createrightTriangle = function(row){
-  let pattern ="";
+  let pattern = [] ;
   for(let rowIndex = row; rowIndex > 0; rowIndex--){
-    pattern += repeatCharacter(rowIndex-1," ");
-    pattern += repeatCharacter(row-rowIndex+1,"*")+"\n";
+   let spaces =  repeatCharacter(rowIndex-1," ");
+    pattern.push(spaces + repeatCharacter(row-rowIndex+1,"*"));
   }
-  return  pattern.substr(0,pattern.length-1);
+  return  pattern.join("\n");
 }
 
 const createTriangleOfType = function({ type , dimensions } ){
