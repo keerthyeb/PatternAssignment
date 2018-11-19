@@ -15,6 +15,7 @@ let left = "left"
 let hollow = "hollow";
 let angularHollow = "angularHollow";
 let negativeOutput = "";
+let negativeInput = -1;
 
 // Test for patternDimensionAndType
 
@@ -55,8 +56,7 @@ filledRectangle_5x5     += "*****";
 assert.equal(createRectangleOfType( {type : 'filled', dimensions : { width : 5 , height : 5 }} ),filledRectangle_5x5);
 
 // Test for negative input
-assert.deepEqual(createRectangleOfType( { type : filled, dimensions : { width : -1 , height : -1 }}),negativeOutput);
-assert.deepEqual(createRectangleOfType( { type : alternating, dimensions : { width : -3 , height : -2 }}),negativeOutput);
+assert.deepEqual(createRectangleOfType( { type : filled, dimensions : { width : negativeInput , height : negativeInput }}),negativeOutput);
 
 console.log("Passed the createRectangleTest");
 
@@ -92,9 +92,7 @@ triangleRight_4    += "****";
 assert.equal(createTriangleOfType( { type : right , dimensions : { width : 4 }} ),triangleRight_4);
 
 // Test for negative inputs
-assert.deepEqual(createTriangleOfType({ type : right , dimensions : {width : -3}} ),negativeOutput);
-assert.deepEqual(createTriangleOfType({ type : left , dimensions : {width : -5}} ),negativeOutput);
-assert.deepEqual(createTriangleOfType({ type : right , dimensions : {width : -1}} ),negativeOutput);
+assert.deepEqual(createTriangleOfType({ type : right , dimensions : {width : negativeInput}} ),negativeOutput);
 
 console.log("Passed the createTriangleTest");
 
@@ -143,8 +141,6 @@ angledDiamond_5    += "  *  ";
 assert.equal(createDiamondOfType( { type : angularHollow , dimensions : { width : 5 }} ), angledDiamond_5);
 
 // Test for negative inputs
-assert.deepEqual(createDiamondOfType({ type : hollow , dimensions : {width : -3}} ),negativeOutput);
-assert.deepEqual(createDiamondOfType({ type : filled , dimensions : {width : -1}} ),negativeOutput);
-assert.deepEqual(createDiamondOfType( { type : filled , dimensions : { width : -4 }} ),negativeOutput);
+assert.deepEqual(createDiamondOfType( { type : filled , dimensions : { width : negativeInput }} ),negativeOutput);
 
 console.log("passed createDiamondTest");
